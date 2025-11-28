@@ -1,16 +1,8 @@
-// import HelloWorld from '@/components/HelloWorld'
 import { useEffect, useState } from 'react'
 import './App.css'
 
 
 export default function App() {
-
-//   const handleClear = () => {
-//     chrome.runtime.sendMessage({
-//       type: "CLEAR_CACHE"
-//     })
-//   }
-
     const [domains, setDomains] = useState([]);
 
     useEffect(() => {

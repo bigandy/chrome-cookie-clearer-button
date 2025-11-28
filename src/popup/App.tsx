@@ -1,12 +1,11 @@
-// import HelloWorld from '@/components/HelloWorld'
+import { messageTypes } from '@/messages'
 import './App.css'
 
 
 export default function App() {
-
   const handleClear = () => {
     chrome.runtime.sendMessage({
-      type: "CLEAR_CACHE"
+      type: messageTypes.CLEAR_CACHE
     })
   }
 

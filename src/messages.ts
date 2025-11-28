@@ -1,0 +1,5 @@
+
+export const messageTypes = {
+    DELETE_LOCALSTORAGE: 'DELETE_LOCALSTORAGE',
+    CLEAR_CACHE: 'CLEAR_CACHE'
+}

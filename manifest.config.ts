@@ -23,6 +23,7 @@ export default defineManifest({
     // "*://*.bsky.app/",
   ],
   permissions: [
+    "browsingData",
     "activeTab",
     "scripting",
     "cookies",
