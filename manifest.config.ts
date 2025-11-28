@@ -3,10 +3,10 @@ import pkg from './package.json'
 
 export default defineManifest({
   manifest_version: 3,
-  name: pkg.name,
+  name: "Custom Storage Clearer",
   version: pkg.version,
   icons: {
-    48: 'public/logo.png',
+    48: 'public/close-48.png',
   },
   action: {
     default_icon: {
