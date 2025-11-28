@@ -1,3 +1,5 @@
+import { messageTypes } from "./messages";
+
 // Need to do this on first opening of extension
 const domains = [
     'indieweb.social',
@@ -46,6 +48,38 @@ chrome.windows.onRemoved.addListener(() => {
     clearCache();
 });
 
-const resetBskyModalState = () => {
-    sessionStorage.setItem("welcomeModalClosed", "true");
+const addSite = async (sendResponse: (response?: any) => void, site: string) => {
+    const { domains }: { domains: string[] } = await chrome.storage.sync.get("domains");
+    const updatedDomains = [...domains, site];
+    await chrome.storage.sync.set({
+        domains: updatedDomains
+    })
+
+    sendResponse({ domains: updatedDomains })
 };
+
+const removeSite = async (sendResponse: (response?: any) => void, site: string) => {
+    const { domains }: { domains: string[] } = await chrome.storage.sync.get("domains");
+    const updatedDomains = domains.filter(domain => {
+
+        return site !== domain;
+    });
+
+    await chrome.storage.sync.set({
+        domains: updatedDomains
+    });
+
+    sendResponse({ domains: updatedDomains })
+};
+
+chrome.runtime.onMessage.addListener((message, _, sendResponse) => {
+    if (message.type === messageTypes.ADD_SITE) {
+        addSite(sendResponse, message.site);
+        return true;
+    }
+
+    if (message.type === messageTypes.REMOVE_SITE) {
+        removeSite(sendResponse, message.site);
+        return true;
+    }
+});

@@ -10,17 +10,12 @@ export default defineManifest({
   },
   action: {
     default_icon: {
-      48: 'public/logo.png',
+      48: 'public/close-48.png',
     },
     // default_popup: 'src/popup/index.html',
   },
   "host_permissions": [
     "<all_urls>"
-    // "*://*.indieweb.social/",
-    // "*://*facebook.com/",
-    // "*://.facebook.com/",
-    // "*://*.facebook.com/",
-    // "*://*.bsky.app/",
   ],
   permissions: [
     "browsingData",
@@ -28,7 +23,6 @@ export default defineManifest({
     "scripting",
     "cookies",
     "tabs",
-    // 'sidePanel',
     'contentSettings',
     'storage'
   ],
@@ -36,9 +30,6 @@ export default defineManifest({
     js: ['src/content/main.ts'],
     matches: ['https://*/*'],
   }],
-  // side_panel: {
-  //   default_path: 'src/sidepanel/index.html',
-  // },
   options_page: 'src/options/index.html',
   background: {
     service_worker: "src/background.ts",
